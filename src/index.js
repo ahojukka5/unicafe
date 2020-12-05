@@ -31,7 +31,7 @@ const Statistics = ({ good, neutral, bad }) => {
   const avg = (1 / all) * (good - bad);
   const pos = (good / all) * 100;
   return (
-    <Table basic='very' celled fixed unstackable>
+    <Table basic="very" celled fixed unstackable>
       <Table.Body>
         <Statistic text="Good" value={good} />
         <Statistic text="Neutral" value={neutral} />
@@ -65,7 +65,7 @@ const App = () => {
     <Container text>
       <Divider hidden />
       <Grid textAlign="center" columns={1}>
-        <Grid.Column style={{maxWidth: 400}}>
+        <Grid.Column style={{ maxWidth: 400 }}>
           <Header as="h1" attached="top" block>
             Give feedback
           </Header>
@@ -75,7 +75,7 @@ const App = () => {
             <Button onClick={onBad}>Bad</Button>
           </Segment>
         </Grid.Column>
-        <Grid.Column style={{maxWidth: 400}}>
+        <Grid.Column style={{ maxWidth: 400 }}>
           <Header as="h1" attached="top" block>
             Statistics
           </Header>
