@@ -1,17 +1,29 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-const Button = ({onClick, text}) => <button onClick={onClick}>{text}</button>;
+import 'semantic-ui-css/semantic.min.css';
 
-const Statistic = ({text, value, unit}) => {
+import {
+  Button,
+  Container,
+  Divider,
+  Grid,
+  Header,
+  Table,
+  Segment,
+} from 'semantic-ui-react';
+
+const Statistic = ({ text, value, unit, round }) => {
   return (
-    <tr>
-      <td>{text}</td>
-      <td>{value} {unit}</td>
-    </tr>
+    <Table.Row>
+      <Table.Cell>{text}</Table.Cell>
+      <Table.Cell textAlign="right">
+        {round ? Math.round(value * 100) / 100 : value} {unit}
+      </Table.Cell>
+    </Table.Row>
   );
 };
-const Statistics = ({good, neutral, bad}) => {
+const Statistics = ({ good, neutral, bad }) => {
   const all = good + neutral + bad;
   if (all === 0) {
     return <p>No feedback given</p>;
@@ -19,16 +31,16 @@ const Statistics = ({good, neutral, bad}) => {
   const avg = (1 / all) * (good - bad);
   const pos = (good / all) * 100;
   return (
-    <table>
-      <tbody>
+    <Table basic='very' celled fixed unstackable>
+      <Table.Body>
         <Statistic text="Good" value={good} />
         <Statistic text="Neutral" value={neutral} />
         <Statistic text="Bad" value={bad} />
         <Statistic text="All" value={all} />
-        <Statistic text="Average" value={avg} />
-        <Statistic text="Positive" value={pos} unit="%"/>
-      </tbody>
-    </table>
+        <Statistic text="Average" value={avg} round />
+        <Statistic text="Positive" value={pos} round unit="%" />
+      </Table.Body>
+    </Table>
   );
 };
 
@@ -50,14 +62,29 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>Give feedback</h1>
-      <Button text="Good" onClick={onGood} />
-      <Button text="Neutral" onClick={onNeutral} />
-      <Button text="Bad" onClick={onBad} />
-      <h1>Statistics</h1>
-      <Statistics good={good} neutral={neutral} bad={bad} />
-    </div>
+    <Container text>
+      <Divider hidden />
+      <Grid textAlign="center" columns={1}>
+        <Grid.Column style={{maxWidth: 400}}>
+          <Header as="h1" attached="top" block>
+            Give feedback
+          </Header>
+          <Segment attached>
+            <Button onClick={onGood}>Good </Button>
+            <Button onClick={onNeutral}>Neutral</Button>
+            <Button onClick={onBad}>Bad</Button>
+          </Segment>
+        </Grid.Column>
+        <Grid.Column style={{maxWidth: 400}}>
+          <Header as="h1" attached="top" block>
+            Statistics
+          </Header>
+          <Segment attached>
+            <Statistics good={good} neutral={neutral} bad={bad} />
+          </Segment>
+        </Grid.Column>
+      </Grid>
+    </Container>
   );
 };
 
