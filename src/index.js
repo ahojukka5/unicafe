@@ -6,7 +6,6 @@ import 'semantic-ui-css/semantic.min.css';
 import {
   Button,
   Container,
-  Divider,
   Grid,
   Header,
   Image,
@@ -67,16 +66,14 @@ const App = () => {
       <Grid textAlign="center" columns={1}>
         <Grid.Column style={{ maxWidth: 400 }}>
           <Grid columns={2} verticalAlign="middle">
-            <Grid.Column width={4}>
+            <Grid.Column width={6}>
               <Image src="/logo.png" />
             </Grid.Column>
-            <Grid.Column width={12}>
+            <Grid.Column width={10}>
               <Header as="h1">Uniface feedback system</Header>
             </Grid.Column>
           </Grid>
         </Grid.Column>
-
-        <Divider hidden />
 
         <Grid.Column style={{ maxWidth: 400 }}>
           <Header as="h3" attached="top" block>
