@@ -9,6 +9,7 @@ import {
   Divider,
   Grid,
   Header,
+  Image,
   Table,
   Segment,
 } from 'semantic-ui-react';
@@ -62,11 +63,23 @@ const App = () => {
   };
 
   return (
-    <Container text>
-      <Divider hidden />
+    <Container text style={{ paddingTop: '1em', paddingBottom: '1em' }}>
       <Grid textAlign="center" columns={1}>
         <Grid.Column style={{ maxWidth: 400 }}>
-          <Header as="h1" attached="top" block>
+          <Grid columns={2} verticalAlign="middle">
+            <Grid.Column width={4}>
+              <Image src="/logo.png" />
+            </Grid.Column>
+            <Grid.Column width={12}>
+              <Header as="h1">Uniface feedback system</Header>
+            </Grid.Column>
+          </Grid>
+        </Grid.Column>
+
+        <Divider hidden />
+
+        <Grid.Column style={{ maxWidth: 400 }}>
+          <Header as="h3" attached="top" block>
             Give feedback
           </Header>
           <Segment attached>
@@ -76,7 +89,7 @@ const App = () => {
           </Segment>
         </Grid.Column>
         <Grid.Column style={{ maxWidth: 400 }}>
-          <Header as="h1" attached="top" block>
+          <Header as="h3" attached="top" block>
             Statistics
           </Header>
           <Segment attached>
