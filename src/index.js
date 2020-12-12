@@ -70,7 +70,7 @@ const App = () => {
               <Image src="/logo.png" />
             </Grid.Column>
             <Grid.Column width={10}>
-              <Header as="h1">Uniface feedback system</Header>
+              <Header as="h1">Unicafe feedback system</Header>
             </Grid.Column>
           </Grid>
         </Grid.Column>
